@@ -1,0 +1,13 @@
+<div *ngIf="page && page.totalPages > 1">
+  <ul class="flex text-xl">
+    <li>
+      <button class="p-2 disabled:text-black disabled:bg-slate-500  border bg-slate-800 border-black rounded-l-2xl" (click)="next.emit(page.number)" [disabled]="page.first">Prev</button>
+    </li>
+    <li *ngFor="let p of pageArray">
+      <button [disabled]="p - 1 === page.number" class="p-2 disabled:text-black disabled:bg-slate-500  border bg-slate-800 border-black" (click)="next.emit(p)">{{p}}</button>
+    </li>
+    <li>
+      <button class="p-2 disabled:text-black disabled:bg-slate-500  border bg-slate-800 border-black rounded-r-2xl" [disabled]="page.last" (click)="next.emit(page.number + 2)">Next</button>
+    </li>
+  </ul>
+</div>
